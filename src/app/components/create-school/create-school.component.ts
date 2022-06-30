@@ -11,25 +11,27 @@ import { SchoolService } from 'src/app/services/school.service';
 })
 export class CreateSchoolComponent implements OnInit {
 
-  constructor(public schoolService:SchoolService, private router:Router) { }
+  constructor(
+    public schoolService:SchoolService,
+    private router:Router) { }
 
   ngOnInit(): void {
 
   }
 
   submitForm(schoolForm:NgForm){
+    console.log(schoolForm.value)
     if(schoolForm.value.id==null){
-      this.schoolService.CreateSchool(schoolForm.value).subscribe((response)=>{
-        this.router.navigate([""]);
+      this.schoolService.CreateSchool(schoolForm.value)
+      .subscribe((response)=>{
+        this.router.navigate(["/list-school"]);
       });
     }else{
-      this.schoolService.UpdateSchool(schoolForm.value).subscribe((Response)=>{
-        this.router.navigate([""]);
-      })
+      this.schoolService.UpdateSchool(schoolForm.value.id,schoolForm.value)
+      .subscribe((response)=>{
+        this.router.navigate(["/list-school"]);
+      });
     }
-    this.schoolService.CreateSchool(schoolForm.value).subscribe((response)=>{
-      this.router.navigate([""]);
-    });
     this.resetForm(schoolForm);
   }
 
@@ -39,4 +41,5 @@ export class CreateSchoolComponent implements OnInit {
       this.schoolService.selectSchool=new School();
     }
   }
+
 }

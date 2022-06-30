@@ -4,7 +4,7 @@
       <div class="col-md-12">
           <div class="inner">
               <h3>Escuelas Profesionales</h3>
-              <a class="btn btn-primary text-white add" routerLink="list-school">
+              <a class="btn btn-primary text-white add" routerLink="/add-school">
                 <i class="fas fa-user-plus"></i> Agregar
               </a>
               <table class="table table-bordered">
@@ -22,7 +22,7 @@
                           <td>{{item.name}}</td>
                           <td>{{item.created_at}}</td>
                           <td>
-                              <button type="button" class="btn btn-success btn-sm move-right" (click)="oneEdit(item)">Edit</button>
+                              <button type="button" class="btn btn-success btn-sm move-right" (click)="onEdit(item)">Edit</button>
                               <button type="button" class="btn btn-danger btn-sm" (click)="deleteSchool(item.id)">Remove</button>
                           </td>
                       </tr>

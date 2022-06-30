@@ -10,25 +10,26 @@ import { SchoolService } from 'src/app/services/school.service';
 })
 export class ListSchoolComponent implements OnInit {
   schoolList:any=[];
-  constructor(public schoolService:SchoolService, private router:Router) { }
+  constructor(public schoolService:SchoolService,private router:Router) { }
 
   ngOnInit(): void {
     this.loadSchools();
   }
 
   loadSchools(){
-    return this.schoolService.GetSchools().subscribe((data:{})=>{this.schoolList=data;
-
+    return this.schoolService.GetSchools().subscribe((data:{})=>{
+      this.schoolList=data;
+      console.log(data);
     });
   }
+
   deleteSchool(id:number){
-    this.schoolService.deleteSchool(id).subscribe((data:{})=>{this.schoolList=data;
-
+    this.schoolService.DeleteSchool(id).subscribe((response)=>{
+      this.loadSchools();
     });
-
   }
 
-  oneEdit(school:School){
+  onEdit(school:School){
     console.log(school);
     this.schoolService.selectSchool=Object.assign({},school);
     this.router.navigate(["/add-school"]);

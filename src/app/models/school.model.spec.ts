@@ -1,7 +1,7 @@
-import { Place } from './place.model';
+import { School } from './school.model';
 
 describe('School', () => {
   it('should create an instance', () => {
-    expect(new Place()).toBeTruthy();
+    expect(new School()).toBeTruthy();
   });
 });

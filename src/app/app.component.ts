@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Sistema de campeonato';
-  equipos=['Ciclo III','Ciclo IV','Ciclo V','Ciclo VI','Ciclo VII'];
+
+  constructor(private authservice:AuthService, private router:Router) {}
+
+  logout() {
+    this.authservice.logout();
+    this.router.navigate(['/']);
+  }
+
 }

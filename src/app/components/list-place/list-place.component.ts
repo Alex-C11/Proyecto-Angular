@@ -9,28 +9,31 @@ import { PlaceService } from 'src/app/services/place.service';
   styleUrls: ['./list-place.component.css']
 })
 export class ListPlaceComponent implements OnInit {
-  placeList:any=[];
-  constructor(public placeService:PlaceService, private router:Router) { }
+  dataList:any=[];
+
+  constructor(public placeService:PlaceService,private router:Router) { }
 
   ngOnInit(): void {
-    this.loadPlaces();
+    this.onList();
   }
 
-  loadPlaces(){
-    return this.placeService.GetPlaces().subscribe((data:{})=>{this.placeList=data;
-
+  onList(){
+    return this.placeService.GetPlaces().subscribe((data:{})=>{
+      this.dataList=data;
+      console.log(data);
     });
   }
-  deletePlaces(id:number){
-    this.placeService.deletePlaces(id).subscribe((data:{})=>{this.loadPlaces();
 
+  onDelete(id:number){
+    this.placeService.DeletePlace(id).subscribe((response)=>{
+      this.onList();
     });
-
   }
 
-  oneEdit(place:Place){
+  onEdit(place:Place){
     console.log(place);
     this.placeService.selectPlace=Object.assign({},place);
     this.router.navigate(["/add-place"]);
   }
+
 }

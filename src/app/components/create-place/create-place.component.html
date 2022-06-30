@@ -1,17 +1,19 @@
 <div class="card mt-5">
   <div class="card-body">
-      <h4 class="text-center">Registro de Campos Deportivos</h4>
+      <h4 class="text-center">Registro de cancha deportiva</h4>
       <form #placeForm="ngForm" (ngSubmit)="submitForm(placeForm)">
           <input type="hidden" name="id" [(ngModel)]="placeService.selectPlace.id">
           <div class="form-group mb-3">
+            <label>Nombre de la cancha</label>
             <input type="text" class="form-control" name="name"
             [(ngModel)]="placeService.selectPlace.name"
-              placeholder="Nombres">
+              placeholder="Nombre">
           </div>
           <div class="form-group mb-3">
+            <label>Ubicación de la Cancha</label>
             <input type="text" class="form-control" name="address"
             [(ngModel)]="placeService.selectPlace.address"
-              placeholder="Address">
+              placeholder="Dirección">
           </div>
           <div class="form-group ">
             <button class="btn btn-primary me-2" type="submit">
@@ -20,7 +22,7 @@
             <button class="btn btn-secondary me-2" type="reset" (click)="resetForm(placeForm)">
                 <i class="fas fa-sync-alt"></i> Resetear
             </button>
-            <button class="btn btn-secondary" type="button" routerLink="/list-place">
+            <button class="btn btn-secondary" type="button" routerLink="/list-school">
               <i class="fas fa-hand-point-left"></i> Cancelar
           </button>
           </div>
